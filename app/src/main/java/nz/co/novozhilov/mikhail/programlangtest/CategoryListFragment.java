@@ -77,7 +77,7 @@ public final class CategoryListFragment extends ListFragment {
             v.getContext().startActivity(questionActivity);
         } else {
             Toast toast = Toast.makeText(getActivity(),
-                    "Sorry! There are no questions in this category!", Toast.LENGTH_SHORT);
+                    "Sorry! This category has no questions in this version!", Toast.LENGTH_SHORT);
             toast.show();
         };
     }
