@@ -44,23 +44,33 @@ public final class MenuMainFragment extends Fragment implements View.OnClickList
 
     @Override
     public void onClick(View v) {
+        MenuFragment menuFragment = new MenuFragment();
+        Bundle bundle = new Bundle();
         // action depends on the view's id
         switch (v.getId()) {
             case R.id.btn_main_java:
                 // start java test menu fragment
-                startFragment(new MenuJavaFragment());
+                bundle.putInt("TestId", 0);
+                menuFragment.setArguments(bundle);
+                startFragment(menuFragment);
                 break;
             case R.id.btn_main_c:
                 // open menu for a c test
-                startFragment(new MenuCFragment());
+                bundle.putInt("TestId", 1);
+                menuFragment.setArguments(bundle);
+                startFragment(menuFragment);
                 break;
             case R.id.btn_main_c_plus:
                 // open menu for a c test
-                startFragment(new MenuCPlusFragment());
+                bundle.putInt("TestId", 2);
+                menuFragment.setArguments(bundle);
+                startFragment(menuFragment);
                 break;
             case R.id.btn_main_c_sharp:
                 // open menu for a c test
-                startFragment(new MenuCSharpFragment());
+                bundle.putInt("TestId", 3);
+                menuFragment.setArguments(bundle);
+                startFragment(menuFragment);
                 break;
             case R.id.btn_menu_statistics:
                 // show statistics by groups (java/c):
