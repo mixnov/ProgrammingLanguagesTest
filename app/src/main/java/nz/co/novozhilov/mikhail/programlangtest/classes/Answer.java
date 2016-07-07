@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest;
+package nz.co.novozhilov.mikhail.programlangtest.classes;
 
 import android.os.Parcel;
 import android.os.Parcelable;

@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest;
+package nz.co.novozhilov.mikhail.programlangtest.classes;
 
 /**
  * Category entity

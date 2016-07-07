@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest;
+package nz.co.novozhilov.mikhail.programlangtest.fragments;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -11,6 +11,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import nz.co.novozhilov.mikhail.programlangtest.FormatHelper;
+import nz.co.novozhilov.mikhail.programlangtest.R;
+import nz.co.novozhilov.mikhail.programlangtest.classes.Question;
 
 /**
  * Show statistics for finished tests

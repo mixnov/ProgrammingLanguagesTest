@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest;
+package nz.co.novozhilov.mikhail.programlangtest.fragments;
 
 import android.app.DialogFragment;
 import android.app.Fragment;
@@ -17,6 +17,12 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import nz.co.novozhilov.mikhail.programlangtest.QuestionCallbacks;
+import nz.co.novozhilov.mikhail.programlangtest.db.QuestionDAOImpl;
+import nz.co.novozhilov.mikhail.programlangtest.R;
+import nz.co.novozhilov.mikhail.programlangtest.classes.Answer;
+import nz.co.novozhilov.mikhail.programlangtest.classes.Question;
 
 /**
  * @author Mikhail Novozhilov novomic@gmail.com

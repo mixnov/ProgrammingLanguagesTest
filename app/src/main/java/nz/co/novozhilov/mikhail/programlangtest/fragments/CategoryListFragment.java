@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest;
+package nz.co.novozhilov.mikhail.programlangtest.fragments;
 
 
 import android.app.ListFragment;
@@ -13,6 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import nz.co.novozhilov.mikhail.programlangtest.CategoryDAOImpl;
+import nz.co.novozhilov.mikhail.programlangtest.R;
+import nz.co.novozhilov.mikhail.programlangtest.activities.QuestionActivity;
+import nz.co.novozhilov.mikhail.programlangtest.classes.Category;
 
 
 /**

@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest;
+package nz.co.novozhilov.mikhail.programlangtest.fragments;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import nz.co.novozhilov.mikhail.programlangtest.FormatHelper;
+import nz.co.novozhilov.mikhail.programlangtest.QuestionCallbacks;
+import nz.co.novozhilov.mikhail.programlangtest.R;
 
 /**
  * Dialog with results of the test

@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest;
+package nz.co.novozhilov.mikhail.programlangtest.db;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import nz.co.novozhilov.mikhail.programlangtest.classes.Answer;
+import nz.co.novozhilov.mikhail.programlangtest.classes.Question;
 import nz.co.novozhilov.mikhail.programlangtest.db.DBHandler;
 
 /**

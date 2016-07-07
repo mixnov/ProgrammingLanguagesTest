@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest;
+package nz.co.novozhilov.mikhail.programlangtest.activities;
 
 
 import android.app.DialogFragment;
@@ -8,22 +8,32 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import nz.co.novozhilov.mikhail.programlangtest.FormatHelper;
+import nz.co.novozhilov.mikhail.programlangtest.classes.Question;
+import nz.co.novozhilov.mikhail.programlangtest.QuestionCallbacks;
+import nz.co.novozhilov.mikhail.programlangtest.db.QuestionDAOImpl;
+import nz.co.novozhilov.mikhail.programlangtest.fragments.QuestionFragment;
+import nz.co.novozhilov.mikhail.programlangtest.R;
+import nz.co.novozhilov.mikhail.programlangtest.fragments.ResultDialogFragment;
 
 /**
  * Question activity contains only one fragment - question fragment
  *
  * @author Mikhail Novozhilov novomic@gmail.com
  */
-public final class QuestionActivity extends AppCompatActivity implements QuestionCallbacks{
+public final class ReviewActivity extends AppCompatActivity implements QuestionCallbacks {
 
     // to pass arguments on first create
     public static final String EXTRA_TEST_TYPE = "TEST_TYPE";
-    public static final String EXTRA_CATEGORY = "CATEGORY";
     // to save current state
     public static final String EXTRA_CURRENT_QUESTION = "CURRENT_QUESTION";
     public static final String EXTRA_QUESTIONS_LIST = "QUESTIONS_LIST";
@@ -38,15 +48,13 @@ public final class QuestionActivity extends AppCompatActivity implements Questio
     private long mMilliseconds;
     private int mTestType;
     private Context mContext;
-    private DownloadByCategoryTask mDownloadTask;
+    private DownloadFailedTask mDownloadTask;
     private PracticeTimer mTimerThread;
     private FragmentManager mFragmentManager;
     //add Handler for timer and progress bar
     private android.os.Handler mTimerHandler;
     // count of errors
     private int mErrorCount;
-    // id of selected category
-    private int mCategory;
     // number of the current question
     private int mCurrentQuestion;
     // Array of questions - create it on first create (if fragment == null)
@@ -65,7 +73,7 @@ public final class QuestionActivity extends AppCompatActivity implements Questio
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        setTitle("Practice");
+        setTitle("Review");
 
         // hide status row from activity
         mQuestionCounter = (TextView)findViewById(R.id.question_counter);
@@ -77,10 +85,8 @@ public final class QuestionActivity extends AppCompatActivity implements Questio
         // get max number of errors from extras
         Bundle extras = this.getIntent().getExtras();
         if (extras != null) {
-            mCategory = extras.getInt(EXTRA_CATEGORY);
             mTestType = extras.getInt(EXTRA_TEST_TYPE);
         } else {
-            mCategory = 0;
             mTestType = Question.JAVA_TEST;
         }
 
@@ -88,7 +94,6 @@ public final class QuestionActivity extends AppCompatActivity implements Questio
         if (savedInstanceState != null){
             //get from saved state
             mCurrentQuestion = savedInstanceState.getInt(EXTRA_CURRENT_QUESTION);
-            mCategory = savedInstanceState.getInt(EXTRA_CATEGORY);
             mQuestions = savedInstanceState.getParcelableArrayList(EXTRA_QUESTIONS_LIST);
             mMilliseconds = savedInstanceState.getLong(EXTRA_TIME_SPENT);
             mQuestions = savedInstanceState.getParcelableArrayList(EXTRA_QUESTIONS_LIST);
@@ -106,10 +111,42 @@ public final class QuestionActivity extends AppCompatActivity implements Questio
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu for questions' review
+        getMenuInflater().inflate(R.menu.menu_review, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+//            case android.R.id.home:
+//                // if there are fragments in back stack - show navigation
+//                if (getFragmentManager().getBackStackEntryCount() > 0) {
+//                    getFragmentManager().popBackStack();
+//                    return true;
+//                }
+            case R.id.remove_all:
+                // clear table mistake
+                QuestionDAOImpl.removeAllMistakes(mContext);
+                // exit review
+                exitReview();
+            case R.id.remove_current:
+                // remove current question from mistakes
+                if (mQuestions != null) {
+                    QuestionDAOImpl.removeMistake(mContext, mQuestions.get(mCurrentQuestion - 1).getId());
+                    // go to the next question
+                    startNextQuestion(true);
+                }
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     protected void onSaveInstanceState(Bundle outState) {
         // number of the current question and category
         outState.putInt(EXTRA_CURRENT_QUESTION, mCurrentQuestion);
-        outState.putInt(EXTRA_CATEGORY, mCategory);
         // spent time
         outState.putLong(EXTRA_TIME_SPENT, mMilliseconds);
         // add array of questions (with possible answers)
@@ -174,7 +211,7 @@ public final class QuestionActivity extends AppCompatActivity implements Questio
             // start progress bar until question load async task is finished
             mProgressBar.setVisibility(View.VISIBLE);
             // start async task to download
-            mDownloadTask = new DownloadByCategoryTask();
+            mDownloadTask = new DownloadFailedTask();
             mDownloadTask.execute();
         } else {
             //re-start timer
@@ -230,36 +267,46 @@ public final class QuestionActivity extends AppCompatActivity implements Questio
     }
 
     /**
+     * finish activity and exit
+     */
+    private void exitReview(){
+        this.finish();
+    }
+
+    /**
      * Async loading data (by category) from database
      *
      * parsed data will be saved into an array list
      */
-    private class DownloadByCategoryTask extends AsyncTask<Void, Void, Void> {
+    private class DownloadFailedTask extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected Void doInBackground(Void... arg0) {
-            if (mCategory == 0) {
-                mQuestions = QuestionDAOImpl.getAllQuestions(mContext, mTestType);
-            } else {
-                mQuestions = QuestionDAOImpl.getQuestionsByCategory(mContext, mTestType, mCategory);
-            }
+            // get questions for review from database
+            mQuestions = QuestionDAOImpl.getFailedQuestions(mContext, mTestType);
             return null;
         }
 
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            // remove progress bar
-            mProgressBar.setVisibility(View.GONE);
-            // create first question's fragment
-            QuestionFragment questionFragment = QuestionFragment.newInstance(true);
-            mFragmentManager.beginTransaction()
-                    .add(R.id.fragmentContainerQuestion, questionFragment)
-                    .commit();
-            // update question counter
-            setQuestionCounter();
-            // start timer
-            mTimerHandler.postDelayed(mTimerThread, 1000);
+            if (mQuestions.size() == 0) {
+                // check if question array is empty
+                Toast.makeText(mContext, "No questions for review", Toast.LENGTH_LONG).show();
+                exitReview();
+            } else {
+                // remove progress bar
+                mProgressBar.setVisibility(View.GONE);
+                // create first question's fragment
+                QuestionFragment questionFragment = QuestionFragment.newInstance(true);
+                mFragmentManager.beginTransaction()
+                        .add(R.id.fragmentContainerQuestion, questionFragment)
+                        .commit();
+                // update question counter
+                setQuestionCounter();
+                // start timer
+                mTimerHandler.postDelayed(mTimerThread, 1000);
+            }
         }
     }
 
@@ -271,9 +318,7 @@ public final class QuestionActivity extends AppCompatActivity implements Questio
 
     @Override
     public boolean getLast() {
-        //get total number of questions
-        int total = (mQuestions == null) ? 0 : mQuestions.size();
-        return total == mCurrentQuestion;
+        return true;
     }
 
     @Override
@@ -298,6 +343,12 @@ public final class QuestionActivity extends AppCompatActivity implements Questio
     }
     @Override
     public void RestartActivity() {
+        mFragmentManager = getFragmentManager();
+        QuestionFragment questionFragment = (QuestionFragment)mFragmentManager
+                .findFragmentById(R.id.fragmentContainerQuestion);
+        // remove fragment
+        FragmentTransaction transaction = mFragmentManager.beginTransaction();
+        transaction.remove(questionFragment).commit();
         // initialize default values
         setDefaultValues();
         // re-create activity

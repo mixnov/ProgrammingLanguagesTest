@@ -1,6 +1,8 @@
 package nz.co.novozhilov.mikhail.programlangtest;
 
 
+import nz.co.novozhilov.mikhail.programlangtest.classes.Question;
+
 /**
  * Test simulation activity class
  *

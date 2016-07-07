@@ -1,13 +1,15 @@
-package nz.co.novozhilov.mikhail.programlangtest;
+package nz.co.novozhilov.mikhail.programlangtest.activities;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.os.Handler;
-import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import nz.co.novozhilov.mikhail.programlangtest.fragments.AboutDialogFragment;
+import nz.co.novozhilov.mikhail.programlangtest.fragments.MenuMainFragment;
+import nz.co.novozhilov.mikhail.programlangtest.R;
 
 
 /**

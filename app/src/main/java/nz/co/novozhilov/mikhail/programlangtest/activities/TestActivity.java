@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest;
+package nz.co.novozhilov.mikhail.programlangtest.activities;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -19,12 +19,21 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import nz.co.novozhilov.mikhail.programlangtest.FormatHelper;
+import nz.co.novozhilov.mikhail.programlangtest.classes.Question;
+import nz.co.novozhilov.mikhail.programlangtest.QuestionCallbacks;
+import nz.co.novozhilov.mikhail.programlangtest.db.QuestionDAOImpl;
+import nz.co.novozhilov.mikhail.programlangtest.fragments.QuestionFragment;
+import nz.co.novozhilov.mikhail.programlangtest.fragments.QuitDialogFragment;
+import nz.co.novozhilov.mikhail.programlangtest.R;
+import nz.co.novozhilov.mikhail.programlangtest.fragments.ResultDialogFragment;
+
 /**
  * Test simulation activity class
  *
  * @author Mikhail Novozhilov novomic@gmail.com
  */
-public final class TestActivity extends AppCompatActivity implements QuestionCallbacks{
+public final class TestActivity extends AppCompatActivity implements QuestionCallbacks {
 
     // exam duration in milliseconds
     private static final long TEST_DURATION = 600000;

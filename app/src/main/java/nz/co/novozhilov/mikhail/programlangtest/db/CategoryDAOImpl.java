@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest;
+package nz.co.novozhilov.mikhail.programlangtest.db;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -7,6 +7,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
+import nz.co.novozhilov.mikhail.programlangtest.classes.Category;
 import nz.co.novozhilov.mikhail.programlangtest.db.DBHandler;
 
 /**

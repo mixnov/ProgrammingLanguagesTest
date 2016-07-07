@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest;
+package nz.co.novozhilov.mikhail.programlangtest.fragments;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import nz.co.novozhilov.mikhail.programlangtest.R;
 
 /**
  * Main menu
