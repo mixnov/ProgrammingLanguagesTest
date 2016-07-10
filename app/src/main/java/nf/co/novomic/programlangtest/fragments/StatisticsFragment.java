@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest.fragments;
+package nf.co.novomic.programlangtest.fragments;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -12,9 +12,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import nz.co.novozhilov.mikhail.programlangtest.FormatHelper;
-import nz.co.novozhilov.mikhail.programlangtest.R;
-import nz.co.novozhilov.mikhail.programlangtest.classes.Question;
+import nf.co.novomic.programlangtest.FormatHelper;
+import nf.co.novomic.programlangtest.R;
+import nf.co.novomic.programlangtest.classes.Question;
 
 /**
  * Show statistics for finished tests
@@ -39,7 +39,7 @@ public final class StatisticsFragment extends Fragment implements View.OnClickLi
         Button btnClearC = (Button) fragment_view.findViewById(R.id.stat_c_clear_btn);
 
         // set icon color
-        int color = getResources().getColor(R.color.material_blue_600);
+        int color = R.color.material_blue_600;
         ImageView ivJava = (ImageView)fragment_view.findViewById(R.id.statistics_java_icon);
         ImageView ivC = (ImageView)fragment_view.findViewById(R.id.statistics_c_icon);
         ivJava.setColorFilter(color);

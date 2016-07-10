@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest;
+package nf.co.novomic.programlangtest;
 
 /**
  * static methods for formating and casting

@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest.fragments;
+package nf.co.novomic.programlangtest.fragments;
 
 
 import android.app.ListFragment;
@@ -14,10 +14,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import nz.co.novozhilov.mikhail.programlangtest.CategoryDAOImpl;
-import nz.co.novozhilov.mikhail.programlangtest.R;
-import nz.co.novozhilov.mikhail.programlangtest.activities.QuestionActivity;
-import nz.co.novozhilov.mikhail.programlangtest.classes.Category;
+import nf.co.novomic.programlangtest.db.CategoryDAOImpl;
+import nf.co.novomic.programlangtest.R;
+import nf.co.novomic.programlangtest.activities.QuestionActivity;
+import nf.co.novomic.programlangtest.classes.Category;
 
 
 /**
@@ -84,7 +84,7 @@ public final class CategoryListFragment extends ListFragment {
             Toast toast = Toast.makeText(getActivity(),
                     "Sorry! This category has no questions in this version!", Toast.LENGTH_SHORT);
             toast.show();
-        };
+        }
     }
 
     /**

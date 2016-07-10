@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest.classes;
+package nf.co.novomic.programlangtest.classes;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
  *
  * @author Mikhail Novozhilov novomic@gmail.com
  */
-final class Answer implements Parcelable {
+public final class Answer implements Parcelable {
 
     private int id;
     private String answerText;
@@ -50,7 +50,7 @@ final class Answer implements Parcelable {
      *
      * @return text of the answer
      */
-    String getAnswerText() {
+    public String getAnswerText() {
         return answerText;
     }
 
@@ -72,7 +72,7 @@ final class Answer implements Parcelable {
      * @param userAnswers - boolean array of user answers (with same order)
      * @return true if user's answer is correct
      */
-    static boolean checkAnswers(ArrayList<Answer> questionAnswers,
+    public static boolean checkAnswers(ArrayList<Answer> questionAnswers,
                                        boolean[] userAnswers){
 
         for (int i = 0; i < questionAnswers.size(); i++) {

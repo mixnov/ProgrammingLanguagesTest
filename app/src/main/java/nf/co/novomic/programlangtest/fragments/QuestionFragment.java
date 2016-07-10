@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest.fragments;
+package nf.co.novomic.programlangtest.fragments;
 
 import android.app.DialogFragment;
 import android.app.Fragment;
@@ -18,11 +18,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import nz.co.novozhilov.mikhail.programlangtest.QuestionCallbacks;
-import nz.co.novozhilov.mikhail.programlangtest.db.QuestionDAOImpl;
-import nz.co.novozhilov.mikhail.programlangtest.R;
-import nz.co.novozhilov.mikhail.programlangtest.classes.Answer;
-import nz.co.novozhilov.mikhail.programlangtest.classes.Question;
+import nf.co.novomic.programlangtest.QuestionCallbacks;
+import nf.co.novomic.programlangtest.db.QuestionDAOImpl;
+import nf.co.novomic.programlangtest.R;
+import nf.co.novomic.programlangtest.classes.Answer;
+import nf.co.novomic.programlangtest.classes.Question;
 
 /**
  * @author Mikhail Novozhilov novomic@gmail.com

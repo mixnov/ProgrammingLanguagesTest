@@ -1,7 +1,7 @@
-package nz.co.novozhilov.mikhail.programlangtest;
+package nf.co.novomic.programlangtest;
 
 
-import nz.co.novozhilov.mikhail.programlangtest.classes.Question;
+import nf.co.novomic.programlangtest.classes.Question;
 
 /**
  * Test simulation activity class

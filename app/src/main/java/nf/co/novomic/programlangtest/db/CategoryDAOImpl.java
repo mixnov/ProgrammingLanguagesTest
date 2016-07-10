@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest.db;
+package nf.co.novomic.programlangtest.db;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -7,15 +7,14 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import nz.co.novozhilov.mikhail.programlangtest.classes.Category;
-import nz.co.novozhilov.mikhail.programlangtest.db.DBHandler;
+import nf.co.novomic.programlangtest.classes.Category;
 
 /**
  * Data access methods for Question entities
  *
  * @author Mikhail Novozhilov novomic@gmail.com
  */
-final class CategoryDAOImpl {
+public final class CategoryDAOImpl {
 
     /**
      * get all categories for test type
@@ -24,7 +23,7 @@ final class CategoryDAOImpl {
      * @param testType - java test, c test, etc.
      * @return list of questions
      */
-    static ArrayList<Category> getAllCategories(Context context, int testType) {
+    public static ArrayList<Category> getAllCategories(Context context, int testType) {
         // open connection to the database
         DBHandler dbHandler = new DBHandler(context);
         SQLiteDatabase db = dbHandler.getWritableDatabase();

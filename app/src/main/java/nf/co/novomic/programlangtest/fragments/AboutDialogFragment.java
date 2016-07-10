@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest.fragments;
+package nf.co.novomic.programlangtest.fragments;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import nz.co.novozhilov.mikhail.programlangtest.R;
+import nf.co.novomic.programlangtest.R;
 
 /**
  * Dialog About this app

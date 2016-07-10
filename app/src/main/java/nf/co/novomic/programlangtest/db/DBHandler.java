@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest.db;
+package nf.co.novomic.programlangtest.db;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

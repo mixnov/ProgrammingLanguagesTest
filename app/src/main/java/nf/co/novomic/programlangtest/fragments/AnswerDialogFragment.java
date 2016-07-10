@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest.fragments;
+package nf.co.novomic.programlangtest.fragments;
 
 import android.app.DialogFragment;
 import android.content.DialogInterface;
@@ -10,8 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import nz.co.novozhilov.mikhail.programlangtest.QuestionCallbacks;
-import nz.co.novozhilov.mikhail.programlangtest.R;
+import nf.co.novomic.programlangtest.QuestionCallbacks;
+import nf.co.novomic.programlangtest.R;
 
 /**
  * Dialog with answer result (correct / wrong)
@@ -77,14 +77,12 @@ public final class AnswerDialogFragment extends DialogFragment{
         if (mCorrect) {
             //set passed
             statusIcon.setImageResource(R.drawable.ic_passed_large);
-            int color = getResources().getColor(R.color.text_green);
-            statusIcon.setColorFilter(color);
+            statusIcon.setColorFilter(R.color.text_green);
             statusText.setText(getResources().getText(R.string.answer_correct));
         } else {
             //set failed
             statusIcon.setImageResource(R.drawable.ic_failed_large);
-            int color = getResources().getColor(R.color.text_red);
-            statusIcon.setColorFilter(color);
+            statusIcon.setColorFilter(R.color.text_red);
             statusText.setText(getResources().getText(R.string.answer_wrong));
         }
         // set right answer text

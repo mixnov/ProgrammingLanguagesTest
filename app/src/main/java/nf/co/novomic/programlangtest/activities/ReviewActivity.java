@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest.activities;
+package nf.co.novomic.programlangtest.activities;
 
 
 import android.app.DialogFragment;
@@ -17,13 +17,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import nz.co.novozhilov.mikhail.programlangtest.FormatHelper;
-import nz.co.novozhilov.mikhail.programlangtest.classes.Question;
-import nz.co.novozhilov.mikhail.programlangtest.QuestionCallbacks;
-import nz.co.novozhilov.mikhail.programlangtest.db.QuestionDAOImpl;
-import nz.co.novozhilov.mikhail.programlangtest.fragments.QuestionFragment;
-import nz.co.novozhilov.mikhail.programlangtest.R;
-import nz.co.novozhilov.mikhail.programlangtest.fragments.ResultDialogFragment;
+import nf.co.novomic.programlangtest.FormatHelper;
+import nf.co.novomic.programlangtest.classes.Question;
+import nf.co.novomic.programlangtest.QuestionCallbacks;
+import nf.co.novomic.programlangtest.db.QuestionDAOImpl;
+import nf.co.novomic.programlangtest.fragments.QuestionFragment;
+import nf.co.novomic.programlangtest.R;
+import nf.co.novomic.programlangtest.fragments.ResultDialogFragment;
 
 /**
  * Question activity contains only one fragment - question fragment

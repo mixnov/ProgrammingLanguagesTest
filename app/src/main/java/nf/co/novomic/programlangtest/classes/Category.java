@@ -1,11 +1,11 @@
-package nz.co.novozhilov.mikhail.programlangtest.classes;
+package nf.co.novomic.programlangtest.classes;
 
 /**
  * Category entity
  *
  * @author Mikhail Novozhilov novomic@gmail.com
  */
-final class Category {
+public final class Category {
     private int id;
     private String name;
     private int test_id;

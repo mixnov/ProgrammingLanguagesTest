@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest.activities;
+package nf.co.novomic.programlangtest.activities;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -7,9 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import nz.co.novozhilov.mikhail.programlangtest.fragments.AboutDialogFragment;
-import nz.co.novozhilov.mikhail.programlangtest.fragments.MenuMainFragment;
-import nz.co.novozhilov.mikhail.programlangtest.R;
+import nf.co.novomic.programlangtest.fragments.AboutDialogFragment;
+import nf.co.novomic.programlangtest.fragments.MenuMainFragment;
+import nf.co.novomic.programlangtest.R;
 
 
 /**

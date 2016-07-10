@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest.fragments;
+package nf.co.novomic.programlangtest.fragments;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
@@ -9,9 +9,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import nz.co.novozhilov.mikhail.programlangtest.FormatHelper;
-import nz.co.novozhilov.mikhail.programlangtest.QuestionCallbacks;
-import nz.co.novozhilov.mikhail.programlangtest.R;
+import nf.co.novomic.programlangtest.FormatHelper;
+import nf.co.novomic.programlangtest.QuestionCallbacks;
+import nf.co.novomic.programlangtest.R;
 
 /**
  * Dialog with results of the test
@@ -85,26 +85,24 @@ public final class ResultDialogFragment extends DialogFragment implements View.O
         if (mTimeSpent == 0) {
             // practice mode (not for test simulation)
             statusIcon.setImageResource(R.drawable.ic_statistics);
-            int color = getResources().getColor(R.color.material_blue_600);
-            statusIcon.setColorFilter(color);
+            statusIcon.setColorFilter(R.color.material_blue_600);
             statusText.setText(getResources().getText(R.string.result_status_statistics));
             dialog.findViewById(R.id.test_result_time).setVisibility(View.GONE);
         } else {
             if (mPassed) {
                 //set passed
                 statusIcon.setImageResource(R.drawable.ic_passed_large);
-                int color = getResources().getColor(R.color.text_green);
-                statusIcon.setColorFilter(color);
+                statusIcon.setColorFilter(R.color.text_green);
                 statusText.setText(getResources().getText(R.string.result_status_passed));
             } else {
                 //set failed
                 statusIcon.setImageResource(R.drawable.ic_failed_large);
-                int color = getResources().getColor(R.color.text_red);
-                statusIcon.setColorFilter(color);
+                statusIcon.setColorFilter(R.color.text_red);
                 statusText.setText(getResources().getText(R.string.result_status_failed));
             }
             TextView tvTime = (TextView)dialog.findViewById(R.id.test_result_time);
-            tvTime.setText("Time: " + FormatHelper.getTimeString(mTimeSpent));
+            String time = String.format(getString(R.string.time), FormatHelper.getTimeString(mTimeSpent));
+            tvTime.setText(time);
         }
         // set details
         TextView tvScore = (TextView)dialog.findViewById(R.id.test_result_score);

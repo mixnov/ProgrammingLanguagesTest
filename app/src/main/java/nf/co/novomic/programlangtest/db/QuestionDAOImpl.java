@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest.db;
+package nf.co.novomic.programlangtest.db;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,9 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import nz.co.novozhilov.mikhail.programlangtest.classes.Answer;
-import nz.co.novozhilov.mikhail.programlangtest.classes.Question;
-import nz.co.novozhilov.mikhail.programlangtest.db.DBHandler;
+import nf.co.novomic.programlangtest.classes.Answer;
+import nf.co.novomic.programlangtest.classes.Question;
 
 /**
  * Data access methods for Question entities
@@ -126,7 +125,7 @@ public final class QuestionDAOImpl {
      * @param testType - java test, C test, etc.
      * @return list of questions
      */
-    static ArrayList<Question> getAllQuestions(Context context, int testType) {
+    public static ArrayList<Question> getAllQuestions(Context context, int testType) {
         String whereClause = " WHERE tq." + DBHandler.COLUMN_TEST + " = " + testType;
         return getQuestions(context, whereClause, "");
     }
@@ -138,7 +137,7 @@ public final class QuestionDAOImpl {
      * @param testType - java test, C test, etc.
      * @return list of questions
      */
-    static ArrayList<Question> getQuestionsByCategory(Context context, int testType, int categoryId){
+    public static ArrayList<Question> getQuestionsByCategory(Context context, int testType, int categoryId){
         String whereClause = " WHERE tq." + DBHandler.COLUMN_TEST + " = " + testType +
                 " AND tq." + DBHandler.COLUMN_CATEGORY_FK + " = " + categoryId;
         return getQuestions(context, whereClause, "");
@@ -151,7 +150,7 @@ public final class QuestionDAOImpl {
      * @param testType - java test, C test, etc.
      * @return list of questions
      */
-    static ArrayList<Question> getFailedQuestions(Context context, int testType){
+    public static ArrayList<Question> getFailedQuestions(Context context, int testType){
         String whereClause = " INNER JOIN " + DBHandler.TABLE_MISTAKES + " te ON te." +
                 DBHandler.COLUMN_ID + " = tq." + DBHandler.COLUMN_ID +
                 " WHERE tq." + DBHandler.COLUMN_TEST + " = " + testType;
@@ -164,7 +163,7 @@ public final class QuestionDAOImpl {
      *
      * @param questionID - question's id in the database
      */
-    static void addMistake(Context context, int questionID) {
+    public static void addMistake(Context context, int questionID) {
         DBHandler dbHandler = new DBHandler(context);
         SQLiteDatabase db = dbHandler.getWritableDatabase();
 
@@ -186,7 +185,7 @@ public final class QuestionDAOImpl {
      *
      * @param questionID - question's id in the database
      */
-    static void removeMistake(Context context, int questionID) {
+    public static void removeMistake(Context context, int questionID) {
         DBHandler dbHandler = new DBHandler(context);
         SQLiteDatabase db = dbHandler.getWritableDatabase();
 
@@ -204,7 +203,7 @@ public final class QuestionDAOImpl {
     /**
      * Remove all questions from mistake table
      */
-    static void removeAllMistakes(Context context) {
+    public static void removeAllMistakes(Context context) {
         DBHandler dbHandler = new DBHandler(context);
         SQLiteDatabase db = dbHandler.getWritableDatabase();
         // delete all
@@ -225,7 +224,7 @@ public final class QuestionDAOImpl {
      * @param questionCount - number of questions to return
      * @return list of questions
      */
-    static ArrayList<Question> getShuffledQuestions(Context context, int testType, int questionCount){
+    public static ArrayList<Question> getShuffledQuestions(Context context, int testType, int questionCount){
         ArrayList<Question> questions = getAllQuestions(context, testType);
         //shuffle result
         Collections.shuffle(questions);

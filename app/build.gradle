@@ -5,8 +5,8 @@ android {
     buildToolsVersion "24.0.0"
 
     defaultConfig {
-        applicationId "nz.co.novozhilov.mikhail.programlangtest"
-        minSdkVersion 14
+        applicationId "nf.co.novomic.programlangtest"
+        minSdkVersion 17
         targetSdkVersion 24
         versionCode 1
         versionName "1.2"

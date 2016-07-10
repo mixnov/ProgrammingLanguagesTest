@@ -1,4 +1,4 @@
-package nz.co.novozhilov.mikhail.programlangtest.fragments;
+package nf.co.novomic.programlangtest.fragments;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import nz.co.novozhilov.mikhail.programlangtest.R;
-import nz.co.novozhilov.mikhail.programlangtest.activities.ReviewActivity;
-import nz.co.novozhilov.mikhail.programlangtest.activities.TestActivity;
+import nf.co.novomic.programlangtest.R;
+import nf.co.novomic.programlangtest.activities.ReviewActivity;
+import nf.co.novomic.programlangtest.activities.TestActivity;
 
 /**
  * Menu for c test
